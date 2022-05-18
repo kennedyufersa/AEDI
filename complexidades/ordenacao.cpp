@@ -7,31 +7,37 @@
 int* lerDados(int);
 void gerarNumerosAleatorios(int);
 void mostrarValores(int*,int);
+
 void bubbleSort(int*, int);
 void quicksort(int*, int, int);
-void merge(int *,int, int , int,int );
 void mergeSort(int *, int, int,int);
+
+void merge(int *,int, int , int,int );
 void swap(int *a, int *b);
 
+/*
+    O algoritmo apresentado no main está ordenando elementos com a quantidade expressa no vetor v(vSize), com valores incrementados em vIncrement.
+*/
 int main()
 {
-    
-    int *v = (int*)malloc(100*sizeof(int));
-    for(int i=0; i<100; i++){
-        v[i] = 10000*(i+1);
+    int vSize = 100;
+    int vIncrement = 100;   
+    int *v = (int*)malloc(vSize*sizeof(int));
+    for(int i=0; i<vSize; i++){
+        v[i] = vIncrement*(i+1);
     }
-    for(int j=0; j<1000; j++){
+    for(int j=0; j<vSize; j++){
+        gerarNumerosAleatorios(v[j]);
+        int *x = (int*)malloc(v[j]*sizeof(int));
         for(int i=0; i<2; i++){
-            gerarNumerosAleatorios(v[j]);
-            int *x;
-            /*BubbleSort
+            //BubbleSort
             x = lerDados(v[j]);
             clock_t dB = clock();
             bubbleSort(x, v[j]);
             dB = clock() - dB;
             FILE *f = fopen("tempoBubble.txt", "a");
             fprintf(f, "%d\t%f\n", v[j], (float) 1000*dB/CLOCKS_PER_SEC);
-            fclose(f);*/
+            fclose(f);
 
             //QuickSort
             x = lerDados(v[j]);
@@ -52,6 +58,8 @@ int main()
             fclose(fM);
         }
     }
+    //quicksort(x, 0, N);
+    //mergeSort(x, 0, N);
     //mostrarValores(x, v[0]);
 }
 
