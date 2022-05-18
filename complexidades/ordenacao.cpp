@@ -52,8 +52,6 @@ int main()
             fclose(fM);
         }
     }
-    //quicksort(x, 0, N);
-    //mergeSort(x, 0, N);
     //mostrarValores(x, v[0]);
 }
 
