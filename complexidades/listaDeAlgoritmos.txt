@@ -1,0 +1,55 @@
+Selection Sort
+Double Selection Sort
+Insertion Sort
+Shell Sort
+Min Heap Sort
+Gravity Sort 
+Comb Sort
+Bubble Sort
+Cocktail Shaker Sort
+Gnome Sort
+Optimized Gnome Sort
+Odd-Even Sort
+Binary Insertion Sort
+Merge Sort
+Binary Merge Sort
+Weave Merge Sort
+TimSort
+Merge Sort In-Place
+WikiSort
+GrailSort
+Quick Sort
+Stable Quick Sort
+Max Heap Sort
+Dual Pivot Quick Sort
+Weak Heap Sort
+Ternary Heap Sort
+Smooth Sort
+Tournament Sort
+Cycle Sort
+Introsort 
+Quick Shell Sort 
+Insert/Bottom-Up Merge 
+Batcher's Odd-Even Mergesort 
+Batcher's Bitonic Sort 
+Pancake Sort 
+Patience Sort 
+Counting Sort 
+Pigeonhole Sort 
+Radix LSD Sort (Base 4) 
+American Flag Sort (128 Buckets) 
+Radix LSD In-Place Sort (Base 10) 
+Radix LSD In-Place Sort (Base 2) 
+Radix MSD Sort (Base 4) 
+Radix MSD Sort (Base 2) 
+Shatter Sort 
+Simple Shatter Sort 
+Flash Sort 
+Time Sort (Mul 4) + Insertion Sort 
+Stooge Sort 
+Bad Sort 
+Silly Sort 
+Slow Sort 
+Less Bogo Sort 
+Cocktail Bogo Sort
+Bogo Sort

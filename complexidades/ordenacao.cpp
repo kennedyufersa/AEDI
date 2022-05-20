@@ -15,13 +15,17 @@ void mergeSort(int *, int, int,int);
 void merge(int *,int, int , int,int );
 void swap(int *a, int *b);
 
+float tempo(clock_t tempo);
+
 /*
     O algoritmo apresentado no main está ordenando elementos com a quantidade expressa no vetor v(vSize), com valores incrementados em vIncrement.
 */
 int main()
 {
     int vSize = 100;
-    int vIncrement = 100;   
+    int vIncrement = 1000; 
+    int tentativa = 5; 
+    clock_t dB[tentativa], dQ[tentativa], dM[tentativa];
     int *v = (int*)malloc(vSize*sizeof(int));
     for(int i=0; i<vSize; i++){
         v[i] = vIncrement*(i+1);
@@ -29,38 +33,37 @@ int main()
     for(int j=0; j<vSize; j++){
         gerarNumerosAleatorios(v[j]);
         int *x = (int*)malloc(v[j]*sizeof(int));
-        for(int i=0; i<2; i++){
+        for(int i=0; i<tentativa; i++){
             //BubbleSort
             x = lerDados(v[j]);
-            clock_t dB = clock();
+            dB[i] = clock();
             bubbleSort(x, v[j]);
-            dB = clock() - dB;
-            FILE *f = fopen("tempoBubble.txt", "a");
-            fprintf(f, "%d\t%f\n", v[j], (float) 1000*dB/CLOCKS_PER_SEC);
-            fclose(f);
-
+            dB[i] = clock() - dB[i];
+    
             //QuickSort
             x = lerDados(v[j]);
-            clock_t dQ = clock();
+            dQ[i] = clock();
             quicksort(x, 0, v[j]);
-            dQ = clock() - dQ;
-            FILE *fQ = fopen("tempoQuick.txt", "a");
-            fprintf(fQ, "%d\t%f\n", v[j], (float) 1000*dQ/CLOCKS_PER_SEC);
-            fclose(fQ);
+            dQ[i] = clock() - dQ[i];
 
             //MergeSort
             x = lerDados(v[j]);
-            clock_t dM = clock();
+            dM[i] = clock();
             mergeSort(x, 0, v[j], v[j]);
-            dM = clock() - dM;
-            FILE *fM = fopen("tempoMerge.txt", "a");
-            fprintf(fM, "%d\t%f\n", v[j], (float) 1000*dM/CLOCKS_PER_SEC);
-            fclose(fM);
+            dM[i] = clock() - dM[i];
         }
+        clock_t sB=dB[0]/tentativa;
+        clock_t sQ=dQ[0]/tentativa;
+        clock_t sM=dM[0]/tentativa;
+        for (int i = 1; i < tentativa; i++){
+            sB += dB[i]/tentativa;
+            sQ += dQ[i]/tentativa;
+            sM += dM[i]/tentativa;
+        }
+        FILE *f = fopen("tempos.txt", "a");
+        fprintf(f, "%d\t%f\t%f\t%f\n", v[j], tempo(sB), tempo(sQ), tempo(sM));
+        fclose(f);
     }
-    //quicksort(x, 0, N);
-    //mergeSort(x, 0, N);
-    //mostrarValores(x, v[0]);
 }
 
 int* lerDados(int t){
@@ -172,3 +175,7 @@ void swap(int *a, int *b){
     *a = *b; 
     *b = temp; 
 } 
+
+float tempo(clock_t tempo){
+    return ((float) tempo)/CLOCKS_PER_SEC;
+}
